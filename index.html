@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMART SERBOG</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="style.css">
+     <link rel="icon" type="image/x-icon" href="logo.png">
+</head>
+<body>
+    <div class="ambient-bg">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+    </div>
+
+    <main class="container">
+       <nav id="nav-controls" class="nav-bar">
+    <button class="btn-back" onclick="app.goBack()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/>
+        </svg>
+        Kembali
+    </button>
+    
+    <span class="nav-separator">/</span>
+    
+    <span id="breadcrumb-active">Dashboard</span>
+</nav>
+
+        <section id="view-dashboard" class="view-section active">
+            <div class="welcome-section">
+
+                <div class="hero-card">
+                    <div class="hero-content">
+                        <h1>Smart Serbog</h1>
+                        <p>Aplikasi Pintar Serayu Bogowonto adalah aplikasi yang berisi data-data OP, DALGUNA, Tata Usaha, dan TP-OP.</p>
+                        <div class="hero-actions">
+                            <button class="btn-white" onclick="document.getElementById('dashboard-grid').scrollIntoView({behavior: 'smooth'})">
+                                Menu
+                            </button>
+                        </div>
+                    </div>
+                    <div class="hero-image">
+                        <div class="glow-effect"></div>
+                        <div class="hero-logo-glass">
+                            <img src="logo.png" alt="Logo BPSDA" class="hero-logo-img">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid-dashboard" id="dashboard-grid"></div>
+            </div>
+        </section>
+
+       <section id="view-subag" class="view-section">
+    <div id="subag-menu-container" class="submenu-grid"></div>
+
+    <div id="subag-list-container" class="list-grid" style="display: none;"></div>
+    
+    <div id="map-container" style="display: none; margin-top: 24px; height: 600px; border-radius: 16px; box-shadow: var(--shadow-lg);"></div>
+</section>
+    </main>
+
+    <div id="modal-detail" class="modal-overlay" onclick="app.closeModal(event)">
+        <div class="modal-card" onclick="event.stopPropagation()">
+            <div style="margin-bottom: 24px; display: flex; justify-content: space-between; align-items: start;">
+                <span style="background: var(--success-light); color: var(--success); padding: 8px 16px; border-radius: 50px; font-size: 0.8rem; font-weight: 700;">STATUS: AKTIF</span>
+                <button class="btn-ghost" onclick="app.closeModal(null)">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+            </div>
+            <h2 id="modal-title">Judul Dokumen</h2>
+            <p id="modal-body">Deskripsi detail dokumen...</p>
+            <div class="modal-actions">
+                <button class="btn btn-ghost" onclick="app.closeModal(null)">Tutup</button>
+                <button class="btn btn-primary">Lihat Arsip Full</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
